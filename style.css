@@ -1,0 +1,81 @@
+/*horizontal 1440px*/
+
+/*////////////////////////// GAME PLAY //////////////////////////*/
+
+#lower {
+  margin: auto;
+  width: 98%;
+  height: 530px;
+  border: 1px solid black;
+}
+
+#grillAction {
+  float: left;
+  margin: 15px;
+  width: 60%;
+  height: 500px;
+  background-color: #cccccc;
+}
+
+.food {
+  display: inline-block;
+  margin-left: 5px;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+}
+
+#foodDrag {
+  width: 200px;
+  height: 100px;
+  background-color: yellow;
+}
+
+#completion {
+  float: right;
+  margin: 15px;
+  width: 25%;
+  height: 500px;
+  background-color: #cccccc;
+}
+
+/*////////////////////////// ORDERS & SCOREBOARD ///////////////////*/
+
+#upper {
+  margin: auto;
+  width: 98%;
+  height: 130px;
+  border: 1px solid black;
+}
+
+#orders {
+  float: left;
+  margin: 15px;
+  height: 100px;
+  width: 590px;
+  background-color: #cccccc;
+}
+
+.order {
+  display: inline-block;
+  margin: 10px 5px;
+  height: 80px;
+  width: 130px;
+  text-align: center;
+}
+
+#parameters {
+  float: right;
+  margin: 15px;
+  height: 100px;
+  width: 400px;
+  background-color: #cccccc;
+}
+
+.status {
+  display: inline-block;
+  margin: 10px 5px;
+  height: 40px;
+  width: 120px;
+  background-color: white;
+}
