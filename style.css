@@ -52,7 +52,7 @@
   float: left;
   margin: 15px;
   height: 100px;
-  width: 590px;
+  width: 720px;
   background-color: #cccccc;
 }
 
@@ -72,10 +72,17 @@
   background-color: #cccccc;
 }
 
-.status {
+.status, .parameter {
   display: inline-block;
-  margin: 10px 5px;
+  margin: 5px 5px;
   height: 40px;
   width: 120px;
+  font-family: Helvetica;
+  text-align: center;
   background-color: white;
+}
+
+#score {
+  font-size: 15px;
+  text-align: right;
 }

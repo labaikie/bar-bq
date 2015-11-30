@@ -16,11 +16,15 @@
               <div class = "order"></div>
               <div class = "order"></div>
               <div class = "order"></div>
+              <div class = "order"></div>
             </div>
             <div id = "parameters">
-              <div class = "status" id = "score"></div>
-              <div class = "status" id = "currentPlayer"></div>
-              <div class = "status" id = "timeLeft"></div>
+              <div class = "parameter">Time Left</div>
+              <div class = "parameter">Current Player</div>
+              <div class = "parameter">Score</div>
+              <div class = "status" id = "timer">00:00</div>
+              <div class = "status" id = "currentPlayer">Player 1</div>
+              <div class = "status" id = "score">0</div>
             </div>
           </div>
           <div id = "lower">
@@ -45,6 +49,9 @@
       </game>
     </main>
     <footer>
+      <button id ="startGame">Start</button>
+      <button id ="scoreGame">Score</button>
+      <input id ="scoredItem"></input>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
