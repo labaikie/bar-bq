@@ -1,7 +1,6 @@
 
 $(function(){
 
-
 //////////////////////////// STRART GAME //////////////////////////////
 
   $('#startGame').click(startGame);
@@ -24,7 +23,7 @@ $(function(){
       $('.order').eq(i).html(currentOrder[i].image);
     }
   }
-
+  console.log(currentOrder);
 ///////////////////////////////// TIMER ///////////////////////////////
 
   function timeGame() {
@@ -40,6 +39,84 @@ $(function(){
       }
       $("#timer").html(count + " secs");
     }
+  }
+
+////////////////////// SELECT ITEMS & GRILL//////////////////////////
+
+  $('.food').click(startGrill);
+
+  function startGrill(){
+
+    for (var i = 0; i < foods.length; i++) {
+      if(foods[i].name === this.id) {
+        var food = foods[i];
+        break;
+      }
+    }
+
+    $('#grill').append("<img src='image/ingredients/" + food.name +"0.png'>");
+    // ADD SIZZLE
+
+    var img = $('#grill img').last();
+
+    img.draggable({
+      cursor: "move",
+      containment: "#lower",
+      snap: "#completion"
+    });
+
+    var count = food.burntime
+    var counter = setInterval(function() {
+      timeGrill(img);
+    }, 1000);
+
+    function timeGrill(img) {
+      count -= 1;
+      if(count > food.cooktime) {
+      } else if(count <= food.cooktime && count > food.pftime) {
+        img.attr('src','image/ingredients/'+ food.name + '1.png')
+        img.attr('id', 'cooked')
+        img.data('score', food.score)
+      } else if(count <= food.pftime && count > 0) {
+        img.attr('src','image/ingredients/'+ food.name + '2.png')
+        img.attr('id', 'cooked')
+        img.data('score', food.pfscore)
+      } else {
+        img.attr('src','image/ingredients/'+ food.name + '3.png')
+        img.attr('id','burned')
+        img.data('score', 0)
+        clearInterval(counter);
+        count = 0;
+      }
+    }
+    finishGrill();
+  }
+
+////////////////////////////// SCORE ////////////////////////////////
+
+  function finishGrill(){
+
+    var scoreBoard = 0;
+    console.log(currentOrder)
+
+    $("#salad, #bread").droppable({
+        accept: "#cooked",
+        drop: function(event, ui) {
+          var score = ui.draggable.data('score')
+          scoreBoard = scoreBoard + score;
+          $('#score').text(scoreBoard);
+          ui.draggable.remove();
+          $(this).append(ui.draggable);
+        }
+    });
+
+    $("#trash").droppable({
+        accept: "#burned",
+        drop: function(event, ui) {
+          ui.draggable.remove();
+          $(this).append(ui.draggable);
+        }
+    });
   }
 
 ///////////////////////////////OBJECTS/////////////////////////////////
@@ -65,101 +142,20 @@ $(function(){
     this.cooktime = cooktime;
     this.pftime = pftime;
     this.burntime = burntime;
-    this.count = this.burntime;
   }
 
-  var patty = new Food("patty",1000,1500,10,17,20);
-  var sausage = new Food("sausage",1000,1500,10,17,20);
-  var steak = new Food("steak",2000,2500,20,25,30);
-  var shrimp = new Food("shrimp",3000,3500,10,15,20);
+  var patty = new Food("patty",1000,1500,13,5,20);
+  var sausage = new Food("sausage",1000,1500,10,5,15);
+  var steak = new Food("steak",2000,2500,20,5,30);
+  var shrimp = new Food("shrimp",3000,3500,5,3,10);
 
   var foods = [patty, sausage, steak, shrimp];
 
 //////////////////////////////////  //////////////////////////////////
-////////////////////// SELECT ITEMS & GRILL//////////////////////////
-
-  $('.food').click(startGrill);
-
-  function startGrill(){
-
-    for (var i = 0; i < foods.length; i++) {
-      if(foods[i].name === this.id) {
-        foods[i].count = foods[i].burntime;
-        break;
-      }
-    }
-
-    var foodItem = foods[i];
-
-    $('#grill').append("<img src='image/ingredients/" + foodItem.name +"0.png'>");
-    // ADD SIZZLE
-
-    var img = $('#grill img').last();
-
-    img.draggable({
-      cursor: "move",
-      containment: "#lower",
-      snap: "#completion"
-    });
-
-
-    var counter = setInterval(function() {
-      timeGrill(img);
-    }, 1000);
-
-    function timeGrill(img) {
-      foodItem.count -= 1;
-      if(foodItem.count > foodItem.cooktime) {
-      } else if(foodItem.count <= foodItem.cooktime && foodItem.count > foodItem.pftime) {
-        img.attr('src','image/ingredients/'+ foodItem.name + '1.png')
-        img.attr('id', 'cooked')
-        img.data('score', foodItem.score)
-      } else if(foodItem.count <= foodItem.pftime && foodItem.count > 0) {
-        img.attr('src','image/ingredients/'+ foodItem.name + '2.png')
-        img.attr('id', 'cooked')
-        img.data('score', foodItem.pfscore)
-      } else {
-        img.attr('src','image/ingredients/'+ foodItem.name + '3.png')
-        img.attr('id','burned')
-        img.data('score', 0)
-        clearInterval(counter);
-        foodItem.count = 0;
-      }
-    }
-    finishGrill();
-  }
-
-////////////////////////////// SCORE ////////////////////////////////
-
-  function finishGrill(){
-
-    var scoreBoard = 0;
-
-    $("#salad, #bread").droppable({
-        accept: "#cooked",
-        drop: function(event, ui) {
-          var score = ui.draggable.data('score')
-          scoreBoard = scoreBoard + score;
-          $('#score').text(scoreBoard);
-          ui.draggable.remove();
-          $(this).append(ui.draggable);
-        }
-    });
-
-    $("#trash").droppable({
-        accept: "#burned",
-        drop: function(event, ui) {
-          ui.draggable.remove();
-          $(this).append(ui.draggable);
-        }
-    });
-  }
 
 //////////////////////////////////  //////////////////////////////////
 
-
 ///////////////////////////////  /////////////////////////////////
-
 
 });
 
