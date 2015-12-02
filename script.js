@@ -23,7 +23,7 @@ $(function(){
       $('.order').eq(i).html(currentOrder[i].image);
     }
   }
-  console.log(currentOrder);
+
 ///////////////////////////////// TIMER ///////////////////////////////
 
   function timeGame() {
@@ -75,15 +75,15 @@ $(function(){
       if(count > food.cooktime) {
       } else if(count <= food.cooktime && count > food.pftime) {
         img.attr('src','image/ingredients/'+ food.name + '1.png')
-        img.attr('id', 'cooked')
+        img.attr('class', 'cooked')
+        img.attr('id', food.name)
         img.data('score', food.score)
       } else if(count <= food.pftime && count > 0) {
         img.attr('src','image/ingredients/'+ food.name + '2.png')
-        img.attr('id', 'cooked')
         img.data('score', food.pfscore)
       } else {
         img.attr('src','image/ingredients/'+ food.name + '3.png')
-        img.attr('id','burned')
+        img.attr('class','burned')
         img.data('score', 0)
         clearInterval(counter);
         count = 0;
@@ -97,24 +97,29 @@ $(function(){
   function finishGrill(){
 
     var scoreBoard = 0;
-    console.log(currentOrder)
 
     $("#salad, #bread").droppable({
-        accept: "#cooked",
+        accept: ".cooked",
         drop: function(event, ui) {
-          var score = ui.draggable.data('score')
-          scoreBoard = scoreBoard + score;
-          $('#score').text(scoreBoard);
-          ui.draggable.remove();
-          $(this).append(ui.draggable);
+          for(var j = 0; j < currentOrder.length; j++) {
+            if(currentOrder[j].side === this.id && currentOrder[j].main === ui.draggable.attr('id')) {
+                var score = ui.draggable.data('score')
+                scoreBoard = scoreBoard + score;
+                $('#score').text(scoreBoard);
+                ui.draggable.remove();
+                break;
+              }
+            else if (j === currentOrder.length - 1) {
+              alert("Not an order");
+            }
+          }
         }
     });
 
     $("#trash").droppable({
-        accept: "#burned",
+        accept: ".burned",
         drop: function(event, ui) {
           ui.draggable.remove();
-          $(this).append(ui.draggable);
         }
     });
   }
