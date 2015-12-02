@@ -1,13 +1,30 @@
 
 $(function(){
 
-//////////////////////////// STRART GAME //////////////////////////////
+/////////////////////// STRART GAME & TIMER//////////////////////////////
 
   $('#startGame').click(startGame);
 
   function startGame(){
     firstFive();   // populates first five random orders
-    timeGame();     // starts game count down
+
+    var playTime = 60;
+    var gameInterval = setInterval(timeGame, 1000);
+
+    function timeGame() {
+      if(playTime > 0){
+        playTime -= 1;
+      } else {
+        clearInterval(gameInterval);
+        playTime = 0;
+        alert("Time's Up!");
+      }
+      $("#timer").html(playTime + " secs");
+    }
+
+    if (playTime > 0) {
+      play();
+    }
   }
 
 /////////////////////// RANDOM MENU CHALLENGE //////////////////////////
@@ -26,90 +43,84 @@ $(function(){
 
 ///////////////////////////////// TIMER ///////////////////////////////
 
-  function timeGame() {
-    var count = 60;
-    var gameInterval = setInterval(countDown, 1000);
-    function countDown() {
-      if(count > 0){
-        count -= 1;
-      } else {
-        clearInterval(gameInterval);
-        count = 0;
-        alert("Time's Up!");
-      }
-      $("#timer").html(count + " secs");
-    }
-  }
+
 
 ////////////////////// SELECT ITEMS & GRILL//////////////////////////
 
-  $('.food').click(startGrill);
+  function play() {
 
-  function startGrill(){
+    $('.food').click(startGrill);
 
-    for (var i = 0; i < foods.length; i++) {
-      if(foods[i].name === this.id) {
-        var food = foods[i];
-        break;
+    function startGrill(){
+
+      for (var i = 0; i < foods.length; i++) {
+        if(foods[i].name === this.id) {
+          var food = foods[i];
+          break;
+        }
       }
-    }
 
-    $('#grill').append("<img src='image/ingredients/" + food.name +"0.png'>");
-    // ADD SIZZLE
+      $('#grill').append("<img src='image/ingredients/" + food.name +"0.png'>");
+      // ADD SIZZLE
 
-    var img = $('#grill img').last();
+      var img = $('#grill img').last();
 
-    img.draggable({
-      cursor: "move",
-      containment: "#lower",
-      snap: "#completion"
-    });
+      img.draggable({
+        cursor: "move",
+        containment: "#lower",
+        snap: "#completion"
+      });
 
-    var count = food.burntime
-    var counter = setInterval(function() {
-      timeGrill(img);
-    }, 1000);
+      var count = food.burntime
+      var counter = setInterval(function() {
+        timeGrill(img);
+      }, 1000);
 
-    function timeGrill(img) {
-      count -= 1;
-      if(count > food.cooktime) {
-      } else if(count <= food.cooktime && count > food.pftime) {
-        img.attr('src','image/ingredients/'+ food.name + '1.png')
-        img.attr('class', 'cooked')
-        img.attr('id', food.name)
-        img.data('score', food.score)
-      } else if(count <= food.pftime && count > 0) {
-        img.attr('src','image/ingredients/'+ food.name + '2.png')
-        img.data('score', food.pfscore)
-      } else {
-        img.attr('src','image/ingredients/'+ food.name + '3.png')
-        img.attr('class','burned')
-        img.data('score', 0)
-        clearInterval(counter);
-        count = 0;
+      function timeGrill(img) {
+        count -= 1;
+        if(count > food.cooktime) {
+        } else if(count <= food.cooktime && count > food.pftime) {
+          img.attr('src','image/ingredients/'+ food.name + '1.png')
+          img.attr('class', 'cooked')
+          img.attr('id', food.name)
+          img.data('score', food.score)
+        } else if(count <= food.pftime && count > 0) {
+          img.attr('src','image/ingredients/'+ food.name + '2.png')
+          img.data('score', food.pfscore)
+        } else {
+          img.attr('src','image/ingredients/'+ food.name + '3.png')
+          img.attr('class','burned')
+          img.data('score', 0)
+          clearInterval(counter);
+          count = 0;
+        }
       }
+      finishGrill();
     }
-    finishGrill();
   }
-
 ////////////////////////////// SCORE ////////////////////////////////
 
-  function finishGrill(){
+  var scoreBoard = 0;
 
-    var scoreBoard = 0;
+  function finishGrill(){
 
     $("#salad, #bread").droppable({
         accept: ".cooked",
         drop: function(event, ui) {
           for(var j = 0; j < currentOrder.length; j++) {
             if(currentOrder[j].side === this.id && currentOrder[j].main === ui.draggable.attr('id')) {
-                var score = ui.draggable.data('score')
-                scoreBoard = scoreBoard + score;
-                $('#score').text(scoreBoard);
-                ui.draggable.remove();
-                break;
+              var score = ui.draggable.data('score')
+              scoreBoard = scoreBoard + score;
+              $('#score').text(scoreBoard);
+              currentOrder.splice(j, 1);
+              currentOrder.push(menus[Math.floor(menus.length * Math.random())]);
+              for(var i = 0; i < $('.order').length; i++){
+                $('.order').eq(i).html(currentOrder[i].image);
               }
-            else if (j === currentOrder.length - 1) {
+              ui.draggable.remove();
+              break;
+              }
+            else if (j === currentOrder.length - 1) { //
               alert("Not an order");
             }
           }
@@ -119,6 +130,9 @@ $(function(){
     $("#trash").droppable({
         accept: ".burned",
         drop: function(event, ui) {
+          var score = -500;
+          scoreBoard = scoreBoard + score;
+          $('#score').text(scoreBoard);
           ui.draggable.remove();
         }
     });
@@ -155,10 +169,6 @@ $(function(){
   var shrimp = new Food("shrimp",3000,3500,5,3,10);
 
   var foods = [patty, sausage, steak, shrimp];
-
-//////////////////////////////////  //////////////////////////////////
-
-//////////////////////////////////  //////////////////////////////////
 
 ///////////////////////////////  /////////////////////////////////
 
