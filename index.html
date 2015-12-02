@@ -7,6 +7,7 @@
   </head>
 
   <body>
+        <button id ="startGame">Start</button>
     <main>
       <game>
         <div id = "play">
@@ -22,7 +23,7 @@
               <div class = "parameter">Time Left</div>
               <div class = "parameter">Current Player</div>
               <div class = "parameter">Score</div>
-              <div class = "status" id = "timer">00:00</div>
+              <div class = "status" id = "timer">60 secs</div>
               <div class = "status" id = "currentPlayer">Player 1</div>
               <div class = "status" id = "score">0</div>
             </div>
@@ -30,17 +31,22 @@
           <div id = "lower">
             <div id = "grillAction">
               <div id = "ingredients">
-                <div class = "food"><img src="image/ingredients/patty.jpg"></div>
-                <div class = "food"></div>
-                <div class = "food"></div>
-                <div class = "food"></div>
+                <div class = "food" id = "patty">
+                  <img src = "image/ingredients/patties.png"></div>
+                <div class = "food" id = "sausage">
+                  <img src = "image/ingredients/sausages.png"></div>
+                <div class = "food" id = "steak">
+                  <img src = "image/ingredients/steaks.png"></div>
+                <div class = "food" id = "shrimp">
+                  <img src = "image/ingredients/shrimps.png"></div>
               </div>
               <div id = "grill"></div>
             </div>
             <div id = "completion">
-              <div id = "salad"></div>
-              <div id = "bread"></div>
-              <div id = "trash"></div>
+              <div id = "salad"><img src = "image/salad.png"></div>
+              <div id = "bread"><img src = "image/bread.png"></div>
+              <div id = "trash"><img src = "image/trash.png"></div>
+            </div>
           </div>
         </div>
         <div id = "start"></div>
@@ -49,9 +55,6 @@
       </game>
     </main>
     <footer>
-      <button id ="startGame">Start</button>
-      <button id ="scoreGame">Score</button>
-      <input id ="scoredItem"></input>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

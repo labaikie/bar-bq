@@ -5,7 +5,7 @@
 #lower {
   margin: auto;
   width: 98%;
-  height: 530px;
+  height: 540px;
   border: 1px solid black;
 }
 
@@ -14,15 +14,39 @@
   margin: 15px;
   width: 60%;
   height: 500px;
-  background-color: #cccccc;
+  background-image: url("image/grill-bg.png");
+  border: 5px solid black;
 }
 
 .food {
+  margin: 0 auto;
+  float: left;
+  width: 209.325px;
+  height: 130px;
+  background-image: url("image/ingredients/plate-bg.png");
+}
+
+.food > img {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+#patty > img {
+  padding: 20px 0;
+  padding-left: 10px;
+}
+
+#sausage > img {
+  padding: 30px 0;
+  padding-left: 20px;
+}
+
+#steak > img, #shrimp > img {
+  padding-left: 15px;
+}
+
+#grill {
   display: inline-block;
-  margin-left: 5px;
-  width: 200px;
-  height: 100px;
-  background-color: white;
 }
 
 #foodDrag {
@@ -36,7 +60,24 @@
   margin: 15px;
   width: 25%;
   height: 500px;
-  background-color: #cccccc;
+  background-image: url("image/plate-yellow.png");
+}
+
+#completion div {
+  margin: auto;
+  height: 165px;
+}
+
+#salad img {
+  padding: 5px 30px;
+}
+
+#bread img {
+  padding: 5px 52px;
+}
+
+#trash img {
+  padding: 10px 100px;
 }
 
 /*////////////////////////// ORDERS & SCOREBOARD ///////////////////*/
@@ -73,16 +114,17 @@
 }
 
 .status, .parameter {
-  display: inline-block;
+  float: left;
   margin: 5px 5px;
   height: 40px;
   width: 120px;
   font-family: Helvetica;
+  font-size: 18px;
+  font-color: black;
   text-align: center;
   background-color: white;
 }
 
-#score {
-  font-size: 15px;
+#score, #timer {
   text-align: right;
 }
