@@ -1,12 +1,42 @@
 /*horizontal 1440px*/
 
+/*INITIAL & ENDING SCREENS*/
+
+#start, #end {
+  display: block;
+  position: absolute;
+  top: 80px;
+  left: 10%;
+  width: 1100px;
+  height: 600px;
+  z-index: 1;
+  background-color: #D9A391;
+  border: 15px solid #57413A;
+}
+
+#start > div {
+  margin: 13% 25%;
+  width: 50%;
+  height: 50%;
+  border: 1px solid #57413A;
+}
+
+#start input {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#end {
+  z-index: 0;
+}
+
 /*////////////////////////// GAME PLAY //////////////////////////*/
 
 #lower {
   margin: auto;
   width: 98%;
   height: 540px;
-  border: 1px solid black;
+  border: 1px solid #57413A;
 }
 
 #grillAction {
@@ -15,7 +45,7 @@
   width: 60%;
   height: 500px;
   background-image: url("image/grill-bg.png");
-  border: 5px solid black;
+  border: 5px solid #57413A;
 }
 
 .food {
@@ -86,7 +116,7 @@
   margin: auto;
   width: 98%;
   height: 130px;
-  border: 1px solid black;
+  border: 1px solid #57413A;
 }
 
 #orders {
@@ -94,7 +124,7 @@
   margin: 15px;
   height: 100px;
   width: 720px;
-  background-color: #cccccc;
+  background-color: #D9A391;
 }
 
 .order {
@@ -102,7 +132,6 @@
   margin: 10px 5px;
   height: 80px;
   width: 130px;
-  text-align: center;
 }
 
 #parameters {
@@ -110,7 +139,7 @@
   margin: 15px;
   height: 100px;
   width: 400px;
-  background-color: #cccccc;
+  background-color: #D9A391;
 }
 
 .status, .parameter {
@@ -118,7 +147,6 @@
   margin: 5px 5px;
   height: 40px;
   width: 120px;
-  font-family: Helvetica;
   font-size: 18px;
   font-color: black;
   text-align: center;
@@ -127,4 +155,13 @@
 
 #score, #timer {
   text-align: right;
+}
+
+
+/*GLOBAL STYLING*/
+
+game {
+  font-family: Helvetica;
+  text-align: center;
+  color: #57413A;
 }
