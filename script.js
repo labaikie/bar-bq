@@ -20,7 +20,7 @@ $(function(){
 
     $('#currentPlayer').html(currentPlayer.name);
     scoreBoard = currentPlayer.score;
-    $('#score').text(+scoreBoard);
+    $('#score').text(scoreBoard);
     $('#orders, #parameters').css('background-color', currentPlayer.color);
 
     firstFive();
@@ -47,7 +47,7 @@ $(function(){
 
   };
 
-///////////////////////////// END GAME /////////////////////////////
+///////////////////////////// End & Reset Game ////////////////////////////////
 
   $('#endGame').click(endGame);
 
@@ -63,6 +63,10 @@ $(function(){
     $('.ending-score').eq(0).html(player1.name + "'s ending score is " + player1.score);
     $('.ending-score').eq(1).html(player2.name + "'s ending score is " + player2.score);
   };
+
+  $('#resetGame').click(function(){
+    location.reload();
+  })
 
 ////////////// Populate Random Menu called @ startGame /////////////////
 
@@ -207,8 +211,9 @@ $(function(){
   var hotdog = new Menu("hotdog","sausage","bread")
   var steaksalad = new Menu("steaksalad","steak","salad")
   var shrimpsalad = new Menu("shrimpsalad","shrimp","salad")
+  var steaksandwich = new Menu("steaksandwich","steak","bread")
 
-  var menus = [burger, hotdog, steaksalad, shrimpsalad];
+  var menus = [burger, hotdog, steaksalad, shrimpsalad, steaksandwich];
 
   function Food(name,score,pfscore,cooktime,pftime,burntime) {
     this.name = name;
