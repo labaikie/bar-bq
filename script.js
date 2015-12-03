@@ -23,12 +23,12 @@ $(function(){
     $('#score').text(+scoreBoard);
     $('#orders, #parameters').css('background-color', currentPlayer.color);
 
-    firstFive();   // populates first five random orders
+    firstFive();
 
-    var playTime = 20;
+    var playTime = 60; // set game time
     var gameInterval = setInterval(timeGame, 1000);
 
-    function timeGame() { // game time set
+    function timeGame() {
 
     $("#timer").html(playTime + " secs");
 
@@ -54,11 +54,11 @@ $(function(){
   function endGame() {
     $('#endDp').css("display", "block");
     if(player1.score > player2.score) {
-      $('#endDp > .logo').text(player1.name + " Won!");
+      $('.logo').eq(1).text(player1.name + " Won!");
     } else if(player1.score < player2.score) {
-      $('#endDp .logo').text(player2.name + " Won!");
+      $('.logo').eq(1).text(player2.name + " Won!");
     } else {
-      $('#endDp .logo').text("It's a tie!");
+      $('.logo').eq(1).text("It's a tie!");
     }
     $('.ending-score').eq(0).html(player1.name + "'s ending score is " + player1.score);
     $('.ending-score').eq(1).html(player2.name + "'s ending score is " + player2.score);
