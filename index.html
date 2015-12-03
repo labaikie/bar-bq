@@ -7,16 +7,22 @@
   </head>
 
   <body>
+
     <main>
       <game>
+
         <div id = "play">
           <div id = "upper">
-            <div id = "orders">
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
+            <div></div>
+            <div>
+              <div class = "wrapper" >CURRENT ORDERS</div>
+              <div id = "orders">
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+              </div>
             </div>
             <div id = "parameters">
               <div class = "parameter">Time Left</div>
@@ -48,8 +54,9 @@
             </div>
           </div>
         </div>
-        <div id = "start">
-          <div>
+
+        <div id = "startDp" class = "overlay">
+          <div class = "screen">
             <h1>Name of Game Goes Here</h1>
             <div>
               <div>1st Player's Name</div>
@@ -57,14 +64,34 @@
               <div>2nd Player's Name</div>
               <input>
             </div>
-            <button id ="startGame">Start</button>
+            <button id = "startGame">Start</button>
           </div>
         </div>
-        <div id = "end"></div>
-        <div id = "instructions"></div>
+
+        <div id = "changeDp" class = "overlay">
+          <div class = "screen">
+            <div id ="scoreDisplay">
+              <div>Scoreboard:</div>
+              <span class = "current-score"></span>
+              <span class = "current-score"></span>
+            </div>
+            <div>Continue with the next player or end game?</div>
+            <button id = "continueGame">Continue</button>
+            <button id = "endGame">End</button>
+          </div>
+        </div>
+
+        <div id = "endDp" class = "overlay">
+          <div class = "screen">
+
+          </div>
+        </div>
+
       </game>
     </main>
+
     <footer>
+      <div id = "instructions"></div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

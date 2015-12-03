@@ -1,28 +1,31 @@
 
 $(function(){
 
-//////////////////////// STRART GAME & TIMER//////////////////////////////
+///////////////////////////// PLAYER OBJECT ////////////////////////////
 
+  var player1 = {
+    score: 0,
+    color: "#D9A391"
+  };
 
-  $('#startGame').click(startGame);
+  var player2 = {
+    score: 0,
+    color: "#91C7D9"
+  };
+
+  var currentPlayer;
+
+//////////////////////// START & CONTINUE GAME /////////////////////////
+
+  $('#startGame, #continueGame').click(startGame);
 
   function startGame(){
 
-    $('#start, #end').css("display", "none");
+    $('#startDp, #endDp, #changeDp').css("display", "none");
+    $()
 
-    var player1 = {
-        name : $('input').eq(0).val(),
-        score: 0,
-        color : "#D9A391"
-    }
-
-    var player2 = {
-        name : $('input').eq(1).val(),
-        score : 0,
-        color : "#91C7D9"
-    }
-
-    var currentPlayer;
+    player1.name = $('input').eq(0).val();
+    player2.name = $('input').eq(1).val();
 
     if (currentPlayer == player1) {
       currentPlayer = player2;
@@ -31,7 +34,7 @@ $(function(){
     }
 
     $('#currentPlayer').html(currentPlayer.name);
-
+    $('#score').html(currentPlayer.score);
 
     firstFive();   // populates first five random orders
 
@@ -47,13 +50,30 @@ $(function(){
       } else {
         clearInterval(gameInterval);
         playTime = 0;
-        alert("Time's up for " + currentPlayer.name);
         $('#grill > img').remove();
-        currentPlayer.score = scoreBoard;
-        startGame();
+        currentPlayer.score = Number(scoreBoard);
+        $('#changeDp').css("display", "block");
+        $('.current-score').eq(0).html(player1.name + "'s current score is " + player1.score);
+        $('.current-score').eq(1).html(player2.name + "'s current score is " + player2.score);
       }
     }
   }
+
+///////////////////////////// END GAME /////////////////////////////
+
+  $('#endGame').click(endGame);
+
+  function endGame() {
+    $('#endDp').css("display", "block");
+    if(player1.score > player2.score) {
+      $('#endDp > div').text(player1.name + " Won!");
+    } else if(player1.score < player2.score) {
+      $('#endDp > div').text(player2.name + " Won!");
+    } else {
+      $('#endDp > div').text("It's a tie!");
+    }
+  }
+
 
 ////////////// Populate Random Menu called @ startGame /////////////////
 
@@ -69,7 +89,7 @@ $(function(){
     }
   }
 
-////////////////////// SELECT ITEMS & GRILL////////////////////////////
+/////////////////////// SELECT FOOD & GRILL ///////////////////////////
 
   $('.food').click(startGrill);
 
@@ -164,7 +184,7 @@ $(function(){
     });
   }
 
-///////////////////////////////OBJECTS/////////////////////////////////
+//////////////////////////// OBJECTS ////////////////////////////////
 
   function Menu(name,main,side) {
     this.name = name;
@@ -196,7 +216,7 @@ $(function(){
 
   var foods = [patty, sausage, steak, shrimp];
 
-///////////////////////////////  /////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 });
 

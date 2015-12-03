@@ -1,36 +1,96 @@
 /*horizontal 1440px*/
 
-/*INITIAL & ENDING SCREENS*/
+/*Global Styling*/
 
-#start, #end {
-  display: block;
-  position: absolute;
-  top: 80px;
-  left: 10%;
-  width: 1100px;
-  height: 600px;
-  z-index: 1;
-  background-color: #D9A391;
-  border: 15px solid #57413A;
+game {
+  font-family: Gill Sans;
+  text-align: center;
+  color: #57413A;
 }
 
-#start > div {
+/*Game Start, Player Change & End Displays (Overlays) */
+
+.overlay {
+  display: block;  /*change to block for initial*/
+  position: absolute;
+  top: 8px;
+  left: 20px;
+  width: 97.1%;
+  height: 695px;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.screen {
   margin: 13% 25%;
   width: 50%;
   height: 50%;
-  border: 1px solid #57413A;
+  background-color: #aea3a7;
 }
 
-#start input {
+#startDp input {
   margin: 20px 0;
-  text-align: center;
 }
 
-#end {
+#endDp, #changeDp {
   z-index: 0;
 }
 
-/*////////////////////////// GAME PLAY //////////////////////////*/
+/*Orders & Parameters*/
+
+#upper {
+  margin: auto;
+  width: 98%;
+  height: 150px;
+  border: 1px solid #57413A;
+}
+
+#orders, #parameters {
+  margin: 0 15px;
+  height: 100px;
+  border-style: outset;
+  background-color: #aea3a7;
+}
+
+#orders  {
+  float: left;
+  width: 720px;
+}
+
+#parameters {
+  float: right;
+  width: 390px;
+}
+
+.wrapper {
+  width: 200px;
+  height: 20px;
+  padding: 5px 12px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.order {
+  display: inline-block;
+  margin: 10px 5px;
+  height: 80px;
+  width: 130px;
+}
+
+.status, .parameter {
+  float: left;
+  margin: 5px 5px;
+  height: 40px;
+  width: 120px;
+  font-size: 18px;
+  background-color: white;
+}
+
+#score, #timer {
+  text-align: right;
+}
+
+/*Main Game Display*/
 
 #lower {
   margin: auto;
@@ -110,58 +170,4 @@
   padding: 10px 100px;
 }
 
-/*////////////////////////// ORDERS & SCOREBOARD ///////////////////*/
 
-#upper {
-  margin: auto;
-  width: 98%;
-  height: 130px;
-  border: 1px solid #57413A;
-}
-
-#orders {
-  float: left;
-  margin: 15px;
-  height: 100px;
-  width: 720px;
-  background-color: #D9A391;
-}
-
-.order {
-  display: inline-block;
-  margin: 10px 5px;
-  height: 80px;
-  width: 130px;
-}
-
-#parameters {
-  float: right;
-  margin: 15px;
-  height: 100px;
-  width: 400px;
-  background-color: #D9A391;
-}
-
-.status, .parameter {
-  float: left;
-  margin: 5px 5px;
-  height: 40px;
-  width: 120px;
-  font-size: 18px;
-  font-color: black;
-  text-align: center;
-  background-color: white;
-}
-
-#score, #timer {
-  text-align: right;
-}
-
-
-/*GLOBAL STYLING*/
-
-game {
-  font-family: Helvetica;
-  text-align: center;
-  color: #57413A;
-}
