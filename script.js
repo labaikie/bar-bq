@@ -1,10 +1,6 @@
 
 $(function(){
 
-///////////////////////////// PLAYER OBJECT ////////////////////////////
-
-
-
 //////////////////////// START & CONTINUE GAME /////////////////////////
 
   $('#startGame, #continueGame').click(startGame);
@@ -18,14 +14,13 @@ $(function(){
 
     if (currentPlayer == player1) {
       currentPlayer = player2;
-      $('#orders, #parameters').css('background-color',player2.color);
     } else {
       currentPlayer = player1;
-      $('#orders, #parameters').css('background-color',player1.color);
     }
 
     $('#currentPlayer').html(currentPlayer.name);
-    // $('#score').html(currentPlayer.score);
+    scoreBoard = currentPlayer.score;
+    $('#orders, #parameters').css('background-color', currentPlayer.color);
 
     firstFive();   // populates first five random orders
 
@@ -42,13 +37,14 @@ $(function(){
         clearInterval(gameInterval);
         playTime = 0;
         $('#grill > img').remove();
-        currentPlayer.score = Number(scoreBoard);
+        currentPlayer.score = scoreBoard;
         $('#changeDp').css("display", "block");
         $('.current-score').eq(0).html(player1.name + "'s current score is " + player1.score);
         $('.current-score').eq(1).html(player2.name + "'s current score is " + player2.score);
       }
     }
-  }
+
+  };
 
 ///////////////////////////// END GAME /////////////////////////////
 
@@ -65,7 +61,7 @@ $(function(){
     }
     $('.ending-score').eq(0).html(player1.name + "'s ending score is " + player1.score);
     $('.ending-score').eq(1).html(player2.name + "'s ending score is " + player2.score);
-  }
+  };
 
 ////////////// Populate Random Menu called @ startGame /////////////////
 
@@ -73,13 +69,20 @@ $(function(){
 
   function firstFive() {
     for(var i = 0; i < 5; i++){
-      var random = Math.floor(menus.length * Math.random());
-      currentOrder[i] = menus[random];
+      currentOrder[i] = menus[randomize(menus.length)];
     }
-    for(var i = 0; i < $('.order').length; i++){
+    show();
+  };
+
+  function randomize(menu) {
+    return Math.floor(menu * Math.random());
+  };
+
+  function show() {
+    for (var i = 0; i < $('.order').length; i++) {
       $('.order').eq(i).html(currentOrder[i].image);
     }
-  }
+  };
 
 /////////////////////// SELECT FOOD & GRILL ///////////////////////////
 
@@ -133,48 +136,50 @@ $(function(){
         count = 0;
       }
     }
+
     finishGrill();
-  }
+
+  };
 
 ////////////////////////////// SCORE ////////////////////////////////
 
-  var scoreBoard = 0;
+  var scoreBoard;
 
   function finishGrill(){
 
     $("#salad, #bread").droppable({
-        accept: ".cooked",
-        drop: function(event, ui) {
-          for(var j = 0; j < currentOrder.length; j++) {
-            if(currentOrder[j].side === this.id && currentOrder[j].main === ui.draggable.attr('id')) {
-              var score = ui.draggable.data('score')
-              scoreBoard = scoreBoard + score;
-              $('#score').text(scoreBoard);
-              currentOrder.splice(j, 1);
-              currentOrder.push(menus[Math.floor(menus.length * Math.random())]);
-              for(var i = 0; i < $('.order').length; i++){
-                $('.order').eq(i).html(currentOrder[i].image);
-              }
-              ui.draggable.remove();
-              break;
-              }
-            else if (j === currentOrder.length - 1) { //
-              alert("Not in the current order");
-            }
+      accept: ".cooked",
+      drop: function(event, ui) {
+        var item = ui.draggable;
+        for(var j = 0; j < currentOrder.length; j++) {
+          if(currentOrder[j].side === this.id && currentOrder[j].main === item.attr('id')) {
+            var score = item.data('score')
+            scoreBoard += score;
+            $('#score').text(scoreBoard);
+            currentOrder.splice(j, 1);
+            currentOrder.push(menus[randomize(menus.length)]);
+            show();
+            item.remove();
+            break;
+          } else if (j === currentOrder.length - 1) {
+            alert("Not in the current order");
           }
         }
-    });
+      }
+    })
 
     $("#trash").droppable({
-        accept: ".burned",
-        drop: function(event, ui) {
-          var score = ui.draggable.data('score')
-          scoreBoard = scoreBoard + score;
-          $('#score').text(scoreBoard);
-          ui.draggable.remove();
-        }
-    });
-  }
+      accept: ".burned",
+      drop: function(event, ui) {
+        var item = ui.draggable;
+        var score = item.data('score')
+        scoreBoard += score;
+        $('#score').text(scoreBoard);
+        item.remove();
+      }
+    })
+
+  };
 
 //////////////////////////// OBJECTS ////////////////////////////////
 
@@ -195,7 +200,7 @@ $(function(){
     this.main = main;
     this.side = side;
     this.image = "<img src='image/orders/" + this.name + ".png'>";
-  }
+  };
 
   var burger = new Menu("burger","patty","bread")
   var hotdog = new Menu("hotdog","sausage","bread")
@@ -211,7 +216,7 @@ $(function(){
     this.cooktime = cooktime;
     this.pftime = pftime;
     this.burntime = burntime;
-  }
+  };
 
   var patty = new Food("patty",1000,1500,13,5,20);
   var sausage = new Food("sausage",1000,1500,10,5,15);
