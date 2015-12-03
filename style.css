@@ -2,10 +2,19 @@
 
 /*Global Styling*/
 
-game {
-  font-family: Gill Sans;
+body {
+  font-family: Rockwell, “Courier Bold”, Courier, Georgia, Times, “Times New Roman”, serif;
+  font-style: bold;
   text-align: center;
   color: #57413A;
+  background-color: #C3C6C7;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 40px;
+  margin: 0 auto;
+  color: black;
 }
 
 /*Game Start, Player Change & End Displays (Overlays) */
@@ -16,16 +25,17 @@ game {
   top: 8px;
   left: 20px;
   width: 97.1%;
-  height: 695px;
+  height: 800px;
   z-index: 2;
   background-color: rgba(0,0,0,0.3);
 }
 
 .screen {
   margin: 13% 25%;
-  width: 50%;
-  height: 50%;
-  background-color: #aea3a7;
+  padding: 50px;
+  width: 40%;
+  height: 40%;
+  background-color: #C3C6C7;
 }
 
 #startDp input {
@@ -36,14 +46,23 @@ game {
   z-index: 0;
 }
 
-/*Orders & Parameters*/
+/*Main Div Styling*/
 
-#upper {
+.main-div {
   margin: auto;
   width: 98%;
-  height: 150px;
-  border: 1px solid #57413A;
+  background-image: url('image/wood-bg.gif');
 }
+
+#upper {
+  height: 150px;
+}
+
+#lower {
+  height: 540px;
+}
+
+/*Orders & Parameters*/
 
 #orders, #parameters {
   margin: 0 15px;
@@ -91,13 +110,6 @@ game {
 }
 
 /*Main Game Display*/
-
-#lower {
-  margin: auto;
-  width: 98%;
-  height: 540px;
-  border: 1px solid #57413A;
-}
 
 #grillAction {
   float: left;
@@ -169,5 +181,11 @@ game {
 #trash img {
   padding: 10px 100px;
 }
+
+/*Footer Styling*/
+
+footer div {
+}
+
 
 

@@ -22,7 +22,6 @@ $(function(){
   function startGame(){
 
     $('#startDp, #endDp, #changeDp').css("display", "none");
-    $()
 
     player1.name = $('input').eq(0).val();
     player2.name = $('input').eq(1).val();
