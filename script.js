@@ -5,12 +5,12 @@ $(function(){
 
   var player1 = {
     score: 0,
-    color: "#D9A391"
+    color: "#F5AA42"
   };
 
   var player2 = {
     score: 0,
-    color: "#91C7D9"
+    color: "#BEED72"
   };
 
   var currentPlayer;
