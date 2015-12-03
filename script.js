@@ -20,11 +20,12 @@ $(function(){
 
     $('#currentPlayer').html(currentPlayer.name);
     scoreBoard = currentPlayer.score;
+    $('#score').text(+scoreBoard);
     $('#orders, #parameters').css('background-color', currentPlayer.color);
 
     firstFive();   // populates first five random orders
 
-    var playTime = 60;
+    var playTime = 20;
     var gameInterval = setInterval(timeGame, 1000);
 
     function timeGame() { // game time set
