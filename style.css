@@ -126,7 +126,7 @@ body {
   text-align: right;
 }
 
-/*Main Game Display*/
+/*Main Game Display Styling*/
 
 #grillAction {
   float: left;
@@ -192,6 +192,3 @@ body {
 #trash img {
   padding: 10px 100px;
 }
-
-/*Footer Styling*/
-

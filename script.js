@@ -3,17 +3,7 @@ $(function(){
 
 ///////////////////////////// PLAYER OBJECT ////////////////////////////
 
-  var player1 = {
-    score: 0,
-    color: "#F5AA42"
-  };
 
-  var player2 = {
-    score: 0,
-    color: "#B0DB69"
-  };
-
-  var currentPlayer;
 
 //////////////////////// START & CONTINUE GAME /////////////////////////
 
@@ -35,11 +25,11 @@ $(function(){
     }
 
     $('#currentPlayer').html(currentPlayer.name);
-    $('#score').html(currentPlayer.score);
+    // $('#score').html(currentPlayer.score);
 
     firstFive();   // populates first five random orders
 
-    var playTime = 3;
+    var playTime = 60;
     var gameInterval = setInterval(timeGame, 1000);
 
     function timeGame() { // game time set
@@ -138,7 +128,7 @@ $(function(){
       } else {
         img.attr('src','image/ingredients/'+ food.name + '3.png')
         img.attr('class','burned')
-        img.data('score', 0)
+        img.data('score', -500)
         clearInterval(counter);
         count = 0;
       }
@@ -169,7 +159,7 @@ $(function(){
               break;
               }
             else if (j === currentOrder.length - 1) { //
-              alert("Not an order");
+              alert("Not in the current order");
             }
           }
         }
@@ -178,7 +168,7 @@ $(function(){
     $("#trash").droppable({
         accept: ".burned",
         drop: function(event, ui) {
-          var score = -500;
+          var score = ui.draggable.data('score')
           scoreBoard = scoreBoard + score;
           $('#score').text(scoreBoard);
           ui.draggable.remove();
@@ -187,6 +177,18 @@ $(function(){
   }
 
 //////////////////////////// OBJECTS ////////////////////////////////
+
+  var currentPlayer;
+
+  var player1 = {
+    score: 0,
+    color: "#F5AA42"
+  };
+
+  var player2 = {
+    score: 0,
+    color: "#B0DB69"
+  };
 
   function Menu(name,main,side) {
     this.name = name;
