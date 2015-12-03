@@ -19,26 +19,32 @@ body {
 /*Game Start, Player Change & End Displays (Overlays) */
 
 .overlay {
-  display: none;  /*change to block for initial*/
+  display: block;  /*change to block for initial*/
   position: absolute;
   top: 8px;
   left: 20px;
   width: 97.1%;
   height: 800px;
   z-index: 2;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.35);
 }
 
 .screen {
   margin: 13% 25%;
-  padding: 50px;
+  padding: 60px;
   width: 40%;
   height: 40%;
   background-color: #C3C6C7;
 }
 
-#startDp input {
-  margin: 20px 0;
+.message {
+  margin-top: 50px;
+  border: 5px solid black;
+}
+
+.message input, .message div {
+  margin: 10px 0;
+  text-align: center;
 }
 
 #endDp, #changeDp {
@@ -65,26 +71,25 @@ body {
 
 #orders, #parameters {
   margin: 0 15px;
-  height: 100px;
+  width: auto;
   border-style: inset;
-  background-color: #aea3a7;
+  background-color: #C3C6C7;
 }
 
 #orders  {
   height: 100px;
   float: left;
-  width: 720px;
+  width: auto;
 }
 
 #parameters, #heading-two {
   height: 50px;
   float: right;
-  width: auto;
 }
 
 #heading {
   width: 200px;
-  height: 20px;
+  height: 25px;
   padding: 5px 12px;
   text-align: left;
   font-size: 20px;
@@ -92,7 +97,7 @@ body {
 
 .order {
   display: inline-block;
-  margin: 10px 5px;
+  margin: 10px 9px;
   height: 80px;
   width: 130px;
 }
@@ -105,7 +110,7 @@ body {
 }
 
 .parameter {
-  font-size: 20px;
+  font-size: 18px;
   padding-right: 15px;
   text-align: right;
 }
@@ -129,7 +134,7 @@ body {
   width: 60%;
   height: 500px;
   background-image: url("image/grill-bg.png");
-  border: 5px solid #57413A;
+  border-style: inset;
 }
 
 .food {
@@ -159,15 +164,19 @@ body {
   display: inline-block;
 }
 
-#completion {
+.completion {
   float: right;
-  margin: 15px;
+  margin: 5px 15px;
   width: 25%;
-  height: 500px;
-  background-image: url("image/plate-yellow.png");
+  height: auto;
 }
 
-#completion div {
+#plated {
+  margin-top: 15px;
+  background-image: url('image/plate-metal.png');
+}
+
+.completion > div {
   margin: auto;
   height: 165px;
 }

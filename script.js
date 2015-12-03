@@ -10,7 +10,7 @@ $(function(){
 
   var player2 = {
     score: 0,
-    color: "#BEED72"
+    color: "#B0DB69"
   };
 
   var currentPlayer;
@@ -28,8 +28,10 @@ $(function(){
 
     if (currentPlayer == player1) {
       currentPlayer = player2;
+      $('#orders, #parameters').css('background-color',player2.color);
     } else {
       currentPlayer = player1;
+      $('#orders, #parameters').css('background-color',player1.color);
     }
 
     $('#currentPlayer').html(currentPlayer.name);
@@ -37,7 +39,7 @@ $(function(){
 
     firstFive();   // populates first five random orders
 
-    var playTime = 60;
+    var playTime = 3;
     var gameInterval = setInterval(timeGame, 1000);
 
     function timeGame() { // game time set
@@ -65,14 +67,15 @@ $(function(){
   function endGame() {
     $('#endDp').css("display", "block");
     if(player1.score > player2.score) {
-      $('#endDp > div').text(player1.name + " Won!");
+      $('#endDp > .logo').text(player1.name + " Won!");
     } else if(player1.score < player2.score) {
-      $('#endDp > div').text(player2.name + " Won!");
+      $('#endDp .logo').text(player2.name + " Won!");
     } else {
-      $('#endDp > div').text("It's a tie!");
+      $('#endDp .logo').text("It's a tie!");
     }
+    $('.ending-score').eq(0).html(player1.name + "'s ending score is " + player1.score);
+    $('.ending-score').eq(1).html(player2.name + "'s ending score is " + player2.score);
   }
-
 
 ////////////// Populate Random Menu called @ startGame /////////////////
 

@@ -46,9 +46,11 @@
               </div>
               <div id = "grill"></div>
             </div>
-            <div id = "completion">
+            <div id = "plated" class = "completion">
               <div id = "salad"><img src = "image/salad.png"></div>
               <div id = "bread"><img src = "image/bread.png"></div>
+            </div>
+            <div id = "not-plated" class = "completion">
               <div id = "trash"><img src = "image/trash.png"></div>
             </div>
           </div>
@@ -61,31 +63,37 @@
               <span>for</span>
               <img src = "image/ga-logo.png">
               </div>
-            <div>
+            <div class = "message">
               <div>1st Player's Name</div>
               <input>
               <div>2nd Player's Name</div>
               <input>
+              <div><button id = "startGame">Start</button></div>
             </div>
-            <button id = "startGame">Start</button>
           </div>
         </div>
 
         <div id = "changeDp" class = "overlay">
           <div class = "screen">
-            <div id ="scoreDisplay">
-              <div>Scoreboard:</div>
-              <span class = "current-score"></span>
-              <span class = "current-score"></span>
+            <div class ="message">
+              <div class = "current-score"></div>
+              <div class = "current-score"></div>
+              <div>Continue playing or end game?</div>
+              <div>
+                <button id = "continueGame">Continue</button>
+                <button id = "endGame">End</button>
+              </div>
             </div>
-            <div>Continue playing or end game?</div>
-            <button id = "continueGame">Continue</button>
-            <button id = "endGame">End</button>
           </div>
         </div>
 
         <div id = "endDp" class = "overlay">
           <div class = "screen">
+            <div class = "logo"></div>
+            <div class ="message">
+              <div class = "ending-score"></div>
+              <div class = "ending-score"></div>
+            </div>
           </div>
         </div>
 
