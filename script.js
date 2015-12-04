@@ -174,7 +174,8 @@ $(function(){
             item.remove();
             break;
           } else if (j === currentOrder.length - 1) {
-            alert("Not in the current order");
+              var wrong = new Audio('sound/wrong.mp3');
+              wrong.play();
           }
         }
       }
