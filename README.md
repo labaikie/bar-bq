@@ -1,5 +1,6 @@
 
 Game Name: "Bar-B-Q for GA"
+Link: http://labaikie.github.io/project-1
 Trello: https://trello.com/b/E106DyAw/project-1-bbq-game
 GitHub: https://github.com/labaikie/project-1
 
@@ -29,7 +30,6 @@ GitHub: https://github.com/labaikie/project-1
     - Burned food tend to shift left on their own whenever a new food item is placed on the grill.
     - The game cannot be paused in the middle of a player's round.
     - The game does not allow the selection of single-player mode.
-
 
 
 

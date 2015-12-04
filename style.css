@@ -160,7 +160,7 @@ body {
   padding-left: 15px;
 }
 
-#grill {
+#grill > img {
   display: inline-block;
 }
 
