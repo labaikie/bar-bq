@@ -1,118 +1,142 @@
-@charset "UTF-8";
 /*Global Styling*/
+$bbq-grey: #C3C6C7;
+
 body {
   font-family: Rockwell, “Courier Bold”, Courier, Georgia, Times, “Times New Roman”, serif;
   font-style: bold;
   text-align: center;
   color: #57413A;
-  background-color: #C3C6C7;
-  text-align: center; }
+  background-color: $bbq-grey;
+  text-align: center;
+}
 
 .logo {
   display: inline-block;
   font-size: 40px;
   margin: 0 auto;
-  color: black; }
+  color: black;
+}
 
 /*Game Start, Player Change & End Displays (Overlays) */
+
 .overlay {
-  display: block;
-  /*change to block for initial*/
+  display: block;  /*change to block for initial*/
   position: absolute;
   top: 8px;
   left: 20px;
   width: 97.1%;
   height: 800px;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.35); }
+  background-color: rgba(0,0,0,0.35);
+}
 
 .screen {
   margin: 13% 25%;
   padding: 60px;
   width: 40%;
   height: 40%;
-  background-color: #C3C6C7; }
+  background-color: $bbq-grey;
+}
 
 .message {
   margin-top: 50px;
-  border: 5px solid black; }
+  border: 5px solid black;
+}
 
 .message input, .message div {
   margin: 10px 0;
-  text-align: center; }
+  text-align: center;
+}
 
 #endDp, #changeDp {
-  z-index: 0; }
+  z-index: 0;
+}
 
 /*Main Div Styling*/
+
 .main-div {
   margin: auto;
   width: 98%;
-  background-image: url("image/wood-bg.gif"); }
+  background-image: url('image/wood-bg.gif');
+}
 
 #upper {
-  height: 150px; }
+  height: 150px;
+}
 
 #lower {
-  height: 540px; }
+  height: 540px;
+}
 
 /*Orders & Parameters*/
+
 #orders, #parameters {
   margin: 0 15px;
   width: auto;
   border-style: inset;
-  background-color: #C3C6C7; }
+  background-color: $bbq-grey;
+}
 
-#orders {
+#orders  {
   height: 100px;
   float: left;
-  width: auto; }
+  width: auto;
+}
 
 #parameters, #heading-two {
   height: 50px;
-  float: right; }
+  float: right;
+}
 
 #heading {
   width: 200px;
   height: 25px;
   padding: 5px 12px;
   text-align: left;
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 .order {
   display: inline-block;
   margin: 10px 9px;
   height: 80px;
-  width: 130px; }
+  width: 130px;
+}
 
 .status, .parameter {
   float: left;
   margin: 2px 5px;
   height: 37px;
-  width: 122px; }
+  width: 122px;
+}
 
 .parameter {
   font-size: 18px;
   padding-right: 15px;
-  text-align: right; }
+  text-align: right;
+}
 
 .status {
   background-color: white;
   border-style: inset;
   font-size: 24px;
-  padding-top: 1px; }
+  padding-top: 1px;
+}
 
 #score, #timer, input {
-  text-align: right; }
+  text-align: right;
+}
 
 /*Main Game Display Styling*/
+
 #grillAction {
   float: left;
   margin: 15px;
   width: 60%;
   height: 500px;
   background-image: url("image/grill-bg.png");
-  border-style: inset; }
+  border-style: inset;
+}
 
 .food {
   margin: 0 auto;
@@ -120,43 +144,52 @@ body {
   width: 209.325px;
   height: 130px;
   cursor: pointer;
-  background-image: url("image/ingredients/plate-bg.png"); }
+  background-image: url("image/ingredients/plate-bg.png");
+}
 
 #patty > img {
   padding: 20px 0;
-  padding-left: 10px; }
+  padding-left: 10px;
+}
 
 #sausage > img {
   padding: 30px 0;
-  padding-left: 20px; }
+  padding-left: 20px;
+}
 
 #steak > img, #shrimp > img {
-  padding-left: 15px; }
+  padding-left: 15px;
+}
 
 #grill > img {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .completion {
   float: right;
   margin: 5px 15px;
   width: 25%;
-  height: auto; }
+  height: auto;
+}
 
 #plated {
   margin-top: 15px;
-  background-image: url("image/plate-metal.png"); }
+  background-image: url('image/plate-metal.png');
+}
 
 .completion > div {
   margin: auto;
-  height: 165px; }
+  height: 165px;
+}
 
 #salad img {
-  padding: 5px 30px; }
+  padding: 5px 30px;
+}
 
 #bread img {
-  padding: 5px 52px; }
+  padding: 5px 52px;
+}
 
 #trash img {
-  padding: 10px 100px; }
-
-/*# sourceMappingURL=style.css.map */
+  padding: 10px 100px;
+}
