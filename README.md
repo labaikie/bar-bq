@@ -2,7 +2,7 @@
 Game Name: "Bar-B-Q for GA"
 Link: http://labaikie.github.io/project-1
 Trello: https://trello.com/b/E106DyAw/project-1-bbq-game
-GitHub: https://github.com/labaikie/project-1
+GitHub: https://github.com/labaikie/bar-bq
 
 
 
