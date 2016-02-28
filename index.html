@@ -4,36 +4,43 @@
     <meta charset="utf-8">
     <title>The BBQ Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
 
   <body>
+    <main class="container-fluid">
 
-    <main>
-      <game>
-
-        <div id = "play">
-          <div id = "upper" class = "main-div">
-            <div id = "heading" >CURRENT ORDERS</div>
-            <div id = "orders">
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
-              <div class = "order"></div>
+          <div id = "upper" class = "main-div row">
+            <div id = "orders" class="col-md-8 col-xs-12">
+              <div class = "heading" >CURRENT ORDERS</div>
+              <div id= "current-order">
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+                <div class = "order"></div>
+              </div>
             </div>
-            <div id = "heading-two">
-                <div class = "parameter">TIME LEFT</div>
-                <div class = "parameter">CURRENT PLAYER</div>
-                <div class = "parameter">SCORE</div>
-            </div>
-            <div id = "parameters">
-              <div class = "status" id = "timer">60 secs</div>
-              <div class = "status" id = "currentPlayer">player1</div>
-              <div class = "status" id = "score">0</div>
+            <div id = "parameters" class="col-md-4 col-xs-12">
+              <div id = "current-status">
+                  <div class = "parameter">
+                    <span>TIME LEFT</span>
+                    <div class = "status" id = "timer">60 secs</div>
+                  </div>
+                  <div class = "parameter">
+                    <span>PLAYER</span>
+                    <div class = "status" id = "currentPlayer">player1</div>
+                  </div>
+                  <div class = "parameter">
+                    <span>SCORE</span>
+                    <div class = "status" id = "score">0</div>
+                  </div>
+              </div>
             </div>
           </div>
-          <div id = "lower" class = "main-div">
-            <div id = "grillAction">
+
+          <div id = "lower" class = "main-div row">
+            <div id = "grillAction" class="col-md-8 col-xs-8">
               <div id = "ingredients">
                 <div class = "food" id = "patty">
                   <img src = "image/ingredients/patties.png"></div>
@@ -46,59 +53,57 @@
               </div>
               <div id = "grill"></div>
             </div>
-            <div id = "plated" class = "completion">
-              <div id = "salad"><img src = "image/salad.png"></div>
-              <div id = "bread"><img src = "image/bread.png"></div>
-            </div>
-            <div id = "not-plated" class = "completion">
-              <div id = "trash"><img src = "image/trash.png"></div>
+            <div id ="finish" class="col-md-4 col-xs-4">
+              <div id = "plated" class = "completion row">
+                <div id = "salad"><img src = "image/salad.png"></div>
+                <div id = "bread"><img src = "image/bread.png"></div>
+              </div>
+              <div id = "not-plated" class = "completion row">
+                <div id = "trash"><img src = "image/trash.png"></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div id = "startDp" class = "overlay">
+        <div id = "startDp" class = "overlay row">
           <div class = "screen">
-            <div class = "logo">
+            <div id ="start-logo" class = "logo">
               <img src = "image/bbq-logo.png">
               <span>for</span>
               <img src = "image/ga-logo.png">
-              </div>
+            </div>
             <div class = "message">
-              <div>1st Player's Name</div>
-              <input>
-              <div>2nd Player's Name</div>
-              <input>
-              <div><button id = "startGame">Start</button></div>
+              <input placeholder="1st Player's Name">
+              <input placeholder="2nd Player's Name">
+              <button class="btn btn-default" id = "startGame">Start</button>
             </div>
           </div>
         </div>
 
-        <div id = "changeDp" class = "overlay">
+        <div id = "changeDp" class = "overlay row">
           <div class = "screen">
             <div class ="message">
               <div class = "current-score"></div>
               <div class = "current-score"></div>
               <div>Continue playing or end game?</div>
               <div>
-                <button id = "continueGame">Continue</button>
-                <button id = "endGame">End</button>
+                <button id = "continueGame" class="btn btn-default">Continue</button>
+                <button id = "endGame" class="btn btn-danger">End</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div id = "endDp" class = "overlay">
+        <div id = "endDp" class = "overlay row">
           <div class = "screen">
             <div class = "logo"></div>
             <div class ="message">
               <div class = "ending-score"></div>
               <div class = "ending-score"></div>
-              <div><button id = "resetGame">Reset</button></div>
+              <div><button id = "resetGame" class="btn btn-default">Reset</button></div>
             </div>
           </div>
         </div>
 
-      </game>
     </main>
 
     <footer>

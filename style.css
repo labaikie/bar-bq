@@ -1,6 +1,8 @@
-/*Global Styling*/
+@charset "UTF-8";
 
+/*Global Styling*/
 body {
+  margin: 0 auto;
   font-family: Rockwell, “Courier Bold”, Courier, Georgia, Times, “Times New Roman”, serif;
   font-style: bold;
   text-align: center;
@@ -9,43 +11,54 @@ body {
   text-align: center;
 }
 
+footer {
+  height: 12vh;
+  background-color: #C3C6C7;
+}
+
+main {
+  width: 100%;
+}
+
 .logo {
   display: inline-block;
-  font-size: 40px;
+  font-size: 2em;
   margin: 0 auto;
   color: black;
 }
 
 /*Game Start, Player Change & End Displays (Overlays) */
-
 .overlay {
-  display: block;  /*change to block for initial*/
-  position: absolute;
-  top: 8px;
-  left: 20px;
-  width: 97.1%;
-  height: 800px;
+  position: fixed;
+  top: 0;
+  left: 2;
+  width: 100%;
+  height: 100vh;
   z-index: 2;
-  background-color: rgba(0,0,0,0.35);
-}
+  background-color: rgba(0, 0, 0, 0.35); }
 
 .screen {
-  margin: 13% 25%;
-  padding: 60px;
-  width: 40%;
-  height: 40%;
+  margin: 15% auto;
+  padding-top: 5%;
+  width: 60%;
+  min-height: 50vh;
   background-color: #C3C6C7;
 }
 
 .message {
-  margin-top: 50px;
+  width: 80%;
+  display: block;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
   border: 5px solid black;
 }
 
 .message input, .message div {
-  margin: 10px 0;
-  text-align: center;
-}
+  display: block;
+  margin: 10px auto;
+  text-align: center; }
 
 #endDp, #changeDp {
   z-index: 0;
@@ -54,72 +67,60 @@ body {
 /*Main Div Styling*/
 
 .main-div {
-  margin: auto;
-  width: 98%;
-  background-image: url('image/wood-bg.gif');
-}
-
-#upper {
-  height: 150px;
+  background-image: url("image/wood-bg.gif");
 }
 
 #lower {
-  height: 540px;
+  min-height: 73vh;
 }
 
 /*Orders & Parameters*/
 
 #orders, #parameters {
-  margin: 0 15px;
-  width: auto;
+  margin: 5px 0;
   border-style: inset;
   background-color: #C3C6C7;
 }
 
-#orders  {
-  height: 100px;
-  float: left;
-  width: auto;
+#orders {
+  max-height: 18vh;
 }
 
-#parameters, #heading-two {
-  height: 50px;
-  float: right;
+#current-order, #current-status {
+  display: block;
+  margin: 0px auto;
 }
 
-#heading {
-  width: 200px;
-  height: 25px;
-  padding: 5px 12px;
+#parameters {
+  height: 8vh;
+}
+
+.heading {
   text-align: left;
-  font-size: 20px;
+  font-size: 1.5em;
 }
 
 .order {
-  display: inline-block;
-  margin: 10px 9px;
+  float: left;
+  width: 20%;
   height: 80px;
-  width: 130px;
 }
 
-.status, .parameter {
-  float: left;
-  margin: 2px 5px;
-  height: 37px;
-  width: 122px;
+.order > img {
+  width: 75%;
+  height: 70px;
 }
 
 .parameter {
-  font-size: 18px;
-  padding-right: 15px;
-  text-align: right;
+  float: left;
+  width: 33%;
+  font-size: 1em;
+  text-align: center;
 }
 
 .status {
   background-color: white;
-  border-style: inset;
   font-size: 24px;
-  padding-top: 1px;
 }
 
 #score, #timer, input {
@@ -127,68 +128,76 @@ body {
 }
 
 /*Main Game Display Styling*/
-
 #grillAction {
-  float: left;
-  margin: 15px;
-  width: 60%;
-  height: 500px;
-  background-image: url("image/grill-bg.png");
-  border-style: inset;
+/*  width: 65%;*/
+  height: 600px;
 }
 
 .food {
   margin: 0 auto;
   float: left;
-  width: 209.325px;
-  height: 130px;
+  width: 25%;
+  min-height: 20px;
   cursor: pointer;
   background-image: url("image/ingredients/plate-bg.png");
+  background-size: cover;
+}
+
+.food > img {
+  width: 100%;
+  height: 130px;
 }
 
 #patty > img {
-  padding: 20px 0;
-  padding-left: 10px;
-}
+  padding: 10px 0;
+  padding-left: 10px; }
 
 #sausage > img {
-  padding: 30px 0;
-  padding-left: 20px;
+  padding: 25px 18px;
 }
 
 #steak > img, #shrimp > img {
-  padding-left: 15px;
-}
+  padding: 10px 0;
+  padding-left: 15px; }
 
 #grill > img {
   display: inline-block;
+  z-index: 5;
+}
+
+#grill {
+  width: 100%;
+  height: 600px;
+  border-style: inset;
+  background-image: url("image/grill-bg.png");
+  background-size: cover;
+  margin: 10px 0;
 }
 
 .completion {
-  float: right;
-  margin: 5px 15px;
-  width: 25%;
-  height: auto;
+  display: inline-block;
 }
 
 #plated {
-  margin-top: 15px;
-  background-image: url('image/plate-metal.png');
+  display: block;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 100%;
+  border-radius: 10px;
+  background-image: url("image/plate-metal.png");
+  background-size: cover;
+}
+
+#not-plated {
+  padding: 40px 0;
+}
+
+#salad > img, #bread > img {
+  display: block;
+  margin: 0 auto;
+  width: 65%;
 }
 
 .completion > div {
-  margin: auto;
   height: 165px;
-}
-
-#salad img {
-  padding: 5px 30px;
-}
-
-#bread img {
-  padding: 5px 52px;
-}
-
-#trash img {
-  padding: 10px 100px;
 }
