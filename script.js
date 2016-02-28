@@ -115,8 +115,8 @@ $(function(){
       containment: "#lower",
       snap: "#completion",
       stop: function(event, ui){
-        console.log($(this).position())
-        if ($(this).position().left <= 860 && $(this).position().top >= 200) {
+        // console.log($(this).position())
+        if ($(this).position().left <= $('#grill').width() && $(this).position().top >= $('#upper').height()) {
           sizzle.play();
         }
       }
@@ -128,7 +128,7 @@ $(function(){
     }, 1000);
 
     function timeGrill(img) {
-      if(img.position().left <= 860 && img.position().top >=200) {
+      if(img.position().left <= $('#grill').width() && img.position().top >= $('#upper').height()) {
         count -= 1;
         if(count > food.cooktime) {
         } else if(count <= food.cooktime && count > food.pftime) {
